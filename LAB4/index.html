@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stronka LAB4</title>
+</head>
+<body>
+<div id="container"></div>
+<div id="container2"></div>
+<section id="main-page"></section>
+<button onclick="pokazDane()">Pokaż moje dane</button>
+<script>
+  const rodzina = ["mama", "tata", "babcia", "dziadek", "ciocia", "wujek"];
+  rodzina[rodzina.length - 1] = "brat";
+  rodzina.push("siostra", "kuzynka");
+  rodzina.unshift("prababcia");
+  document.getElementById("container").innerHTML = rodzina.join(", ");
+  const kluby = ["Real Madryt", "Legia Warszawa", "FC Barcelona"];
+  kluby.unshift("Arka Gdynia");
+  const totalElements = document.body.getElementsByTagName("*").length;
+  document.getElementById("container2").innerHTML = `<p>Wszystkie elementy: <strong>${totalElements}</strong></p>`;
+  const section = document.getElementById("main-page");
+  const p1 = document.createElement("p");
+  p1.id = "dane1";
+  p1.textContent = `Pierwsza osoba z rodziny to: ${rodzina[0]}`;
+  const p2 = document.createElement("p");
+  p2.id = "dane2";
+  p2.textContent = `Ulubiony klub: ${kluby[1]}`;
+  section.appendChild(p1);
+  section.appendChild(p2);
+  let i = 0;
+  let polowaRodziny = "";
+  while (i < Math.floor(rodzina.length / 2)) {
+    polowaRodziny += rodzina[i] + "<br>";
+    i++;
+  }
+  section.innerHTML += `<h3>Połowa rodziny (while):</h3>${polowaRodziny}`;
+  let polowaRodzinyFor = "";
+  for (let j = 0; j < Math.floor(rodzina.length / 2); j++) {
+    polowaRodzinyFor += rodzina[j] + "<br>";
+  }
+  section.innerHTML += `<h3>Połowa rodziny (for):</h3>${polowaRodzinyFor}`;
+  function pokazDane() {
+    const dane1 = document.getElementById("dane1").textContent;
+    const dane2 = document.getElementById("dane2").textContent;
+    alert(`Dane z DOM:\n${dane1}\n${dane2}`);
+  }
+</script>
+</body>
+</html>
