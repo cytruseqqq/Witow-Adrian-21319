@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html class="no-js" lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Quiz DOM</title>
+  <link rel="stylesheet" href="css/style.css">
+  <meta name="theme-color" content="#fafafa">
+  <script>
+    let score = 0;
+    let q = 0;
+    const questions = [
+      ['Czy Polska ma więcej niż 50 milionów ludzi?', "Nie"],
+      ['Czy prezydentem Polski jest Kacper Woszczyło?', "Nie"],
+      ['Czy Polska leży na mapie obok Niemiec?', "Tak"]
+    ];
+    function startQuiz() {
+      if (q < questions.length) {
+        document.getElementById('pytanie').innerText = questions[q][0];
+        document.getElementById('odpowiedz').value = '';
+      } else {
+        document.getElementById('pytanie').innerText = "Koniec quizu!";
+        document.getElementById('nastepne').disabled = true;
+      }
+    }
+
+    function NastepnePytanie() {
+      let userAnswer = document.getElementById('odpowiedz').value;
+      if (userAnswer.trim() == questions[q][1]) {
+        score++;
+      }
+      q++;
+      if (q < questions.length) {
+        document.getElementById('pytanie').innerText = questions[q][0];
+        document.getElementById('odpowiedz').value = '';
+      } else {
+        document.getElementById('pytanie').innerText = "Koniec quizu!";
+        document.getElementById('nastepne').disabled = true;
+      }
+      document.getElementById('wynik').innerText = 'Wynik: ' + score + ' / ' + questions.length;
+    }
+  </script>
+</head>
+<body onload="startQuiz()">
+<section id="Projekt1" class="main">
+  <h2 id="pytanie">Pytanie pojawi się tutaj</h2>
+  <input type="text" id="odpowiedz" placeholder="Wpisz odpowiedź...">
+  <br><br>
+  <button id="nastepne" onclick="NastepnePytanie()">Następne pytanie</button>
+  <p id="wynik">Wynik: 0 / 3</p>
+</section>
+</body>
+</html>
