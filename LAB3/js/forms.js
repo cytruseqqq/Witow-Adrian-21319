@@ -1,18 +1,18 @@
-function validateName() {
-    const name = document.getElementById("name");
-    const errorName = document.getElementById("errorName");
-    const formGroupName = document.getElementById("formGroupName");
+ function validateName() {
+        const name = document.getElementById("name");
+        const errorName = document.getElementById("errorName");
+        const formGroupName = document.getElementById("formGroupName");
 
-    errorName.className = "d-none";
-    formGroupName.classList.remove("is-valid", "is-invalid");
+        errorName.className = "d-none";
+        formGroupName.classList.remove("is-valid", "is-invalid");
 
-    if (name.value.trim() === "") {
-        errorName.className = "alert alert-danger";
-        formGroupName.classList.add("is-invalid");
-    } else {
-        formGroupName.classList.add("is-valid");
+        if (name.value.trim() === "") {
+            errorName.className = "alert alert-danger";
+            formGroupName.classList.add("is-invalid");
+        } else {
+            formGroupName.classList.add("is-valid");
+        }
     }
-}
 
 function validateEmail() {
     const email = document.getElementById("email");
